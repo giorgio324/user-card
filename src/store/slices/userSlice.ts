@@ -4,6 +4,7 @@ export type User = {
   name: string;
   lastName: string;
   position: string;
+  image: string;
   adress?: string;
   instagramLink: string;
   facebookLink: string;
