@@ -4,6 +4,7 @@ import { selectUser } from '../../store/slices/userSlice';
 import UserImage from '../../components/User/UserImage';
 import { Navigate } from 'react-router-dom';
 import { FaInstagram, FaFacebook, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { BiLogoVenmo } from 'react-icons/bi';
 import UserSocialMediaIcon from '../../components/User/UserSocialMediaIcon';
 import styles from '../../pages/User/user.module.css';
 import webImage from '../../assets/1.jpg';
@@ -30,13 +31,23 @@ const User = () => {
             {user?.name} {user?.lastName}
           </h1>
           <h4 className='text-secondary'>{user.position}</h4>
-          <p className='text-secondary mt-2'>{user.address}</p>
+          <div
+            className='d-flex justify-content-center align-items-center'
+            style={{ gap: 8 }}
+          >
+            <p className='text-secondary mt-1'>{user.address}</p>
+            <p className='text-secondary mt-1'>|</p>
+            <p className='text-secondary mt-1'>{`agency: ${user.agency}`}</p>
+          </div>
         </Col>
       </Row>
       <section
         className='d-flex justify-content-center px-2'
         style={{ gap: 24 }}
       >
+        <UserSocialMediaIcon socialMediaURL={user.venmoURL}>
+          <BiLogoVenmo className={styles.userIcon} />
+        </UserSocialMediaIcon>
         <UserSocialMediaIcon socialMediaURL={user.instagramURL}>
           <FaInstagram className={styles.userIcon} />
         </UserSocialMediaIcon>
@@ -50,15 +61,29 @@ const User = () => {
           <FaLinkedin className={styles.userIcon} />
         </UserSocialMediaIcon>
       </section>
-      <Row className='mt-2 mb-4'>
-        <Col>
-          <UserInfo imageURL={webImage} text='website' />
-          <UserInfo imageURL={imdbImage} text='imdb' />
-          <UserInfo imageURL={commercialImage} text='commercials' />
-          <UserInfo imageURL={featuresImage} text='features & television' />
-          <UserInfo imageURL={contactImage} text='contact' />
-        </Col>
-      </Row>
+      <section className='mb-4'>
+        <Row className='mt-1'>
+          <Col lg={6}>
+            <UserInfo imageURL={webImage} text='website' />
+          </Col>
+          <Col lg={6}>
+            <UserInfo imageURL={imdbImage} text='imdb' />
+          </Col>
+        </Row>
+        <Row className='mt-1'>
+          <Col lg={6}>
+            <UserInfo imageURL={commercialImage} text='commercials' />
+          </Col>
+          <Col lg={6}>
+            <UserInfo imageURL={featuresImage} text='features & television' />
+          </Col>
+        </Row>
+        <Row className='mt-1 '>
+          <Col lg={12}>
+            <UserInfo imageURL={contactImage} text='contact' />
+          </Col>
+        </Row>
+      </section>
     </Container>
   );
 };

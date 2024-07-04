@@ -7,12 +7,12 @@ export type User = {
   position: string;
   image: string;
   address?: string;
+  agency?: string;
+  venmoURL: string;
   instagramURL: string;
   facebookURL: string;
   twitterURL: string;
   linkedInURL: string;
-  website?: string;
-  imdb?: string;
 };
 
 type UserSliceState = {

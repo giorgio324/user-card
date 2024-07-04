@@ -13,13 +13,13 @@ const HomeForm = () => {
     lastName: '',
     position: '',
     address: '',
+    agency: '',
     image: '',
+    venmoURL: '',
     instagramURL: '',
     facebookURL: '',
     twitterURL: '',
     linkedInURL: '',
-    website: '',
-    imdb: '',
   };
 
   const navigate = useNavigate();
@@ -83,6 +83,14 @@ const HomeForm = () => {
                   <Row className='py-2 gy-3'>
                     <Col md={6} lg={3}>
                       <FormInputField
+                        name='agency'
+                        controlId='formAgency'
+                        placeholder='agency'
+                        label='Agency'
+                      />
+                    </Col>
+                    <Col md={6} lg={3}>
+                      <FormInputField
                         name='instagramURL'
                         controlId='formInstagramURL'
                         placeholder='instagram URL'
@@ -108,6 +116,8 @@ const HomeForm = () => {
                         required
                       />
                     </Col>
+                  </Row>
+                  <Row className='py-2 gy-3'>
                     <Col md={6} lg={3}>
                       <FormInputField
                         name='linkedInURL'
@@ -117,22 +127,13 @@ const HomeForm = () => {
                         required
                       />
                     </Col>
-                  </Row>
-                  <Row className='py-2 gy-3'>
                     <Col md={6} lg={3}>
                       <FormInputField
-                        name='website'
-                        controlId='formWebsite'
-                        placeholder='website URL'
-                        label='Website URL'
-                      />
-                    </Col>
-                    <Col md={6} lg={3}>
-                      <FormInputField
-                        name='imdb'
-                        controlId='formImdb'
-                        placeholder='imdb URL'
-                        label='imdb URL'
+                        name='venmoURL'
+                        controlId='formVenmoURL'
+                        placeholder='venmo URL'
+                        label='Venmo URL'
+                        required
                       />
                     </Col>
                     <Col md={12} lg={6}>
