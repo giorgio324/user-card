@@ -5,15 +5,13 @@ export type User = {
   lastName: string;
   position: string;
   image: string;
-  adress?: string;
-  instagramLink: string;
-  facebookLink: string;
-  twitterLink: string;
-  linkedInLink: string;
+  address?: string;
+  instagramURL: string;
+  facebookURL: string;
+  twitterURL: string;
+  linkedInURL: string;
   website?: string;
   imdb?: string;
-  features?: string;
-  contact?: string;
 };
 
 type UserSliceState = {

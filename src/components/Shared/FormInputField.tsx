@@ -7,6 +7,7 @@ type FormInputFieldProps = {
   controlId: string;
   type?: 'text' | 'email' | 'password';
   placeholder?: string;
+  required?: boolean;
 };
 
 const FormInputField: React.FC<FormInputFieldProps> = ({
@@ -14,6 +15,7 @@ const FormInputField: React.FC<FormInputFieldProps> = ({
   label,
   type = 'text',
   placeholder,
+  required = false,
   ...props
 }) => {
   const [field, meta] = useField(props);
@@ -22,7 +24,9 @@ const FormInputField: React.FC<FormInputFieldProps> = ({
 
   return (
     <Form.Group controlId={controlId}>
-      <Form.Label>{label}</Form.Label>
+      <Form.Label className='text-capitalize'>
+        {label} {required && <span className='text-danger'>*</span>}
+      </Form.Label>
       <Form.Control
         {...field}
         {...props}
