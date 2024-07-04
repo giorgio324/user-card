@@ -1,9 +1,11 @@
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
-import { User } from '../../store/slices/userSlice';
+import { setUser, User } from '../../store/slices/userSlice';
 import FormInputField from '../Shared/FormInputField';
 import { Formik, FormikProps } from 'formik';
 import { userValidationSchema } from '../../schema/userValidationSchema';
 import FormFileField from '../Shared/FormFileField';
+import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../hooks/reduxTypedHooks';
 
 const HomeForm = () => {
   const initialState: User = {
@@ -20,8 +22,12 @@ const HomeForm = () => {
     imdb: '',
   };
 
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const handleSubmit = (values: User) => {
     console.log(values);
+    dispatch(setUser(values));
+    navigate('/user');
   };
 
   return (
@@ -30,7 +36,7 @@ const HomeForm = () => {
       onSubmit={handleSubmit}
       validationSchema={userValidationSchema}
     >
-      {({ values, handleSubmit }: FormikProps<User>) => {
+      {({ handleSubmit }: FormikProps<User>) => {
         return (
           <Container>
             <Row className='justify-content-center py-5 roboto'>

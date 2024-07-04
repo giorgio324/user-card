@@ -14,9 +14,9 @@ const FormFileField = ({ label, controlId, required, ...props }: Props) => {
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const imageFileList = e.target.files;
     if (imageFileList && imageFileList.length > 0) {
-      // imageFileList[0] is only used to update previewImage state so user can see image that they uploaded, the image in formik is stored as a filelist
-      helpers.setValue(imageFileList);
-      const urlImage = URL.createObjectURL(imageFileList[0]);
+      const file = imageFileList[0];
+      const localImageUrl = window.URL.createObjectURL(file);
+      helpers.setValue(localImageUrl);
     }
   };
 
