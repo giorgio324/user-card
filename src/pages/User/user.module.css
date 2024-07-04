@@ -1,0 +1,29 @@
+.userImage {
+  width: 125px;
+  height: 125px;
+  object-fit: cover;
+}
+
+.userIcon {
+  font-size: 18px;
+  color: black;
+}
+
+.userInfoImage {
+  height: 80px;
+  object-fit: cover;
+}
+
+@media (min-width: 768px) {
+  .userImage {
+    width: 250px;
+    height: 250px;
+  }
+  .userIcon {
+    font-size: 28px;
+    color: black;
+  }
+  .userInfoImage {
+    height: 225px;
+  }
+}
