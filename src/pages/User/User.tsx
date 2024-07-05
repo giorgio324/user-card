@@ -33,16 +33,15 @@ const User = () => {
     iconColor: '#000000',
   };
 
-  const [userColorSettings, setUserColorSettings] =
+  const [userIconSettings, setUserIconSettings] =
     useState<FormInputs>(initialState);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setUserColorSettings((prevState) => ({
+    setUserIconSettings((prevState) => ({
       ...prevState,
       [name]: value,
     }));
-    console.log(userColorSettings);
   };
 
   if (!user) {
@@ -74,42 +73,42 @@ const User = () => {
         style={{ gap: 24 }}
       >
         <UserSocialMediaIcon
-          color={userColorSettings.iconColor}
-          backgroundColor={userColorSettings.iconBackgroundColor}
+          color={userIconSettings.iconColor}
+          backgroundColor={userIconSettings.iconBackgroundColor}
           socialMediaURL={user.venmoURL}
         >
           <BiLogoVenmo className={styles.userIcon} />
         </UserSocialMediaIcon>
         <UserSocialMediaIcon
-          color={userColorSettings.iconColor}
-          backgroundColor={userColorSettings.iconBackgroundColor}
+          color={userIconSettings.iconColor}
+          backgroundColor={userIconSettings.iconBackgroundColor}
           socialMediaURL={user.instagramURL}
         >
           <FaInstagram className={styles.userIcon} />
         </UserSocialMediaIcon>
         <UserSocialMediaIcon
-          color={userColorSettings.iconColor}
-          backgroundColor={userColorSettings.iconBackgroundColor}
+          color={userIconSettings.iconColor}
+          backgroundColor={userIconSettings.iconBackgroundColor}
           socialMediaURL={user.facebookURL}
         >
           <FaFacebook className={styles.userIcon} />
         </UserSocialMediaIcon>
         <UserSocialMediaIcon
-          color={userColorSettings.iconColor}
-          backgroundColor={userColorSettings.iconBackgroundColor}
+          color={userIconSettings.iconColor}
+          backgroundColor={userIconSettings.iconBackgroundColor}
           socialMediaURL={user.twitterURL}
         >
           <FaTwitter className={styles.userIcon} />
         </UserSocialMediaIcon>
         <UserSocialMediaIcon
-          color={userColorSettings.iconColor}
-          backgroundColor={userColorSettings.iconBackgroundColor}
+          color={userIconSettings.iconColor}
+          backgroundColor={userIconSettings.iconBackgroundColor}
           socialMediaURL={user.linkedInURL}
         >
           <FaLinkedin className={styles.userIcon} />
         </UserSocialMediaIcon>
       </section>
-      <section className='mb-4'>
+      <section>
         <Row className='mt-1'>
           <Col lg={6}>
             <UserInfo imageURL={webImage} text='website' />
@@ -133,21 +132,26 @@ const User = () => {
         </Row>
       </section>
       <Row className='py-4'>
-        <h3>settings</h3>
-        <FormColorField
-          controlId='formColor'
-          name='iconBackgroundColor'
-          label='iconBackgroundColor'
-          onChange={handleChange}
-          value={userColorSettings.iconBackgroundColor}
-        />
-        <FormColorField
-          controlId='formiconColor'
-          name='iconColor'
-          label='iconColor'
-          onChange={handleChange}
-          value={userColorSettings.iconColor}
-        />
+        <h3 className='text-center py-2'>settings</h3>
+        <Col>
+          <FormColorField
+            controlId='formColor'
+            name='iconBackgroundColor'
+            label='iconBackgroundColor'
+            onChange={handleChange}
+            value={userIconSettings.iconBackgroundColor}
+          />
+        </Col>
+
+        <Col>
+          <FormColorField
+            controlId='formiconColor'
+            name='iconColor'
+            label='iconColor'
+            onChange={handleChange}
+            value={userIconSettings.iconColor}
+          />
+        </Col>
       </Row>
     </Container>
   );
