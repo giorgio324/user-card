@@ -1,13 +1,24 @@
 type Props = {
   children: React.ReactNode;
   socialMediaURL: string;
+  backgroundColor: string;
+  color: string;
 };
-const UserSocialMediaIcon = ({ children, socialMediaURL }: Props) => {
+const UserSocialMediaIcon = ({
+  children,
+  socialMediaURL,
+  backgroundColor = '#fff',
+  color = '#000000',
+}: Props) => {
   return (
     <a
       href={socialMediaURL}
       target='_blank'
-      className='d-flex bg-white p-2 rounded-circle'
+      style={{
+        backgroundColor: backgroundColor,
+        color: color,
+      }}
+      className='d-flex p-2 rounded-circle'
     >
       {children}
     </a>

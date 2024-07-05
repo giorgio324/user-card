@@ -13,9 +13,37 @@ import featuresImage from '../../assets/3.jpg';
 import contactImage from '../../assets/4.jpg';
 import commercialImage from '../../assets/5.jpg';
 import UserInfo from '../../components/User/UserInfo';
+import { useState } from 'react';
+import FormColorField from '../../components/Shared/FormColorField';
+
+type FormInputs = {
+  iconBackgroundColor: string;
+  iconColor: string;
+  buttonBackgroundColor: string;
+  buttonImage: string;
+};
 
 const User = () => {
   const user = useAppSelector(selectUser);
+
+  const initialState: FormInputs = {
+    buttonBackgroundColor: '',
+    buttonImage: '',
+    iconBackgroundColor: '#ffffff',
+    iconColor: '#000000',
+  };
+
+  const [userColorSettings, setUserColorSettings] =
+    useState<FormInputs>(initialState);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setUserColorSettings((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+    console.log(userColorSettings);
+  };
 
   if (!user) {
     return <Navigate to={'/'} />;
@@ -45,19 +73,39 @@ const User = () => {
         className='d-flex justify-content-center px-2'
         style={{ gap: 24 }}
       >
-        <UserSocialMediaIcon socialMediaURL={user.venmoURL}>
+        <UserSocialMediaIcon
+          color={userColorSettings.iconColor}
+          backgroundColor={userColorSettings.iconBackgroundColor}
+          socialMediaURL={user.venmoURL}
+        >
           <BiLogoVenmo className={styles.userIcon} />
         </UserSocialMediaIcon>
-        <UserSocialMediaIcon socialMediaURL={user.instagramURL}>
+        <UserSocialMediaIcon
+          color={userColorSettings.iconColor}
+          backgroundColor={userColorSettings.iconBackgroundColor}
+          socialMediaURL={user.instagramURL}
+        >
           <FaInstagram className={styles.userIcon} />
         </UserSocialMediaIcon>
-        <UserSocialMediaIcon socialMediaURL={user.facebookURL}>
+        <UserSocialMediaIcon
+          color={userColorSettings.iconColor}
+          backgroundColor={userColorSettings.iconBackgroundColor}
+          socialMediaURL={user.facebookURL}
+        >
           <FaFacebook className={styles.userIcon} />
         </UserSocialMediaIcon>
-        <UserSocialMediaIcon socialMediaURL={user.twitterURL}>
+        <UserSocialMediaIcon
+          color={userColorSettings.iconColor}
+          backgroundColor={userColorSettings.iconBackgroundColor}
+          socialMediaURL={user.twitterURL}
+        >
           <FaTwitter className={styles.userIcon} />
         </UserSocialMediaIcon>
-        <UserSocialMediaIcon socialMediaURL={user.linkedInURL}>
+        <UserSocialMediaIcon
+          color={userColorSettings.iconColor}
+          backgroundColor={userColorSettings.iconBackgroundColor}
+          socialMediaURL={user.linkedInURL}
+        >
           <FaLinkedin className={styles.userIcon} />
         </UserSocialMediaIcon>
       </section>
@@ -84,6 +132,23 @@ const User = () => {
           </Col>
         </Row>
       </section>
+      <Row className='py-4'>
+        <h3>settings</h3>
+        <FormColorField
+          controlId='formColor'
+          name='iconBackgroundColor'
+          label='iconBackgroundColor'
+          onChange={handleChange}
+          value={userColorSettings.iconBackgroundColor}
+        />
+        <FormColorField
+          controlId='formiconColor'
+          name='iconColor'
+          label='iconColor'
+          onChange={handleChange}
+          value={userColorSettings.iconColor}
+        />
+      </Row>
     </Container>
   );
 };
