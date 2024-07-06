@@ -19,16 +19,12 @@ import FormColorField from '../../components/Shared/FormColorField';
 type FormInputs = {
   iconBackgroundColor: string;
   iconColor: string;
-  buttonBackgroundColor: string;
-  buttonImage: string;
 };
 
 const User = () => {
   const user = useAppSelector(selectUser);
 
   const initialState: FormInputs = {
-    buttonBackgroundColor: '',
-    buttonImage: '',
     iconBackgroundColor: '#ffffff',
     iconColor: '#000000',
   };
@@ -131,7 +127,7 @@ const User = () => {
           </Col>
         </Row>
       </section>
-      <Row className='py-4'>
+      <Row className='py-4 gap-3'>
         <h3 className='text-center py-2'>settings</h3>
         <Col>
           <FormColorField
@@ -142,7 +138,6 @@ const User = () => {
             value={userIconSettings.iconBackgroundColor}
           />
         </Col>
-
         <Col>
           <FormColorField
             controlId='formiconColor'
