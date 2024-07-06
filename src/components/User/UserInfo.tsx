@@ -31,7 +31,7 @@ const UserInfo = ({ imageURL, text }: Props) => {
       >
         <h3 className='text-uppercase'>{text}</h3>
       </div>
-      <div className='d-flex justify-content-between align-items-start mt-2'>
+      <div className='d-flex justify-content-between align-items-end mt-2'>
         <FormColorField
           controlId={`form${text}Background`}
           label='background color'
@@ -39,7 +39,9 @@ const UserInfo = ({ imageURL, text }: Props) => {
           onChange={handleColorChange}
           value={bgColor}
         />
-        <Button onClick={handleRemove}>remove image</Button>
+        <Button onClick={handleRemove} className='text-capitalize'>
+          remove image
+        </Button>
       </div>
       <FormImageField
         label='change background image'

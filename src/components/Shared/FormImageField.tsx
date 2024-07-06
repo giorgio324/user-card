@@ -7,7 +7,7 @@ type Props = {
   setValue: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const FormImageField = ({ label, name, value, setValue }: Props) => {
+const FormImageField = ({ label, name, setValue }: Props) => {
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const imageFileList = e.target.files;
     if (imageFileList && imageFileList.length > 0) {
@@ -18,7 +18,10 @@ const FormImageField = ({ label, name, value, setValue }: Props) => {
   };
 
   return (
-    <Form.Group controlId={`form${name}Image`} className=''>
+    <Form.Group
+      controlId={`form${name}Image`}
+      className='mt-3 text-capitalize roboto-bold'
+    >
       <Form.Label>{label}</Form.Label>
       <Form.Control type='file' name={name} onChange={handleImageChange} />
     </Form.Group>

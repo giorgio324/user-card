@@ -128,7 +128,7 @@ const User = () => {
         </Row>
       </section>
       <Row className='py-4 gap-3'>
-        <h3 className='text-center py-2'>settings</h3>
+        <h3 className='text-center py-2 text-capitalize'>Icon Settings</h3>
         <Col>
           <FormColorField
             controlId='formColor'

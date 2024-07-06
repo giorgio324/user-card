@@ -11,7 +11,7 @@ type Props = {
 const FormColorField = ({ label, controlId, name, onChange, value }: Props) => {
   return (
     <Form.Group controlId={controlId} className='d-flex flex-column'>
-      <Form.Label className='text-uppercase roboto-bold'>{label}</Form.Label>
+      <Form.Label className='text-capitalize roboto-medium'>{label}</Form.Label>
       <Form.Control
         type='color'
         name={name}
